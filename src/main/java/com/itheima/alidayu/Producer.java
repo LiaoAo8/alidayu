@@ -7,14 +7,16 @@ import org.apache.rocketmq.common.message.Message;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class Producer {
 
-    /***
+    /**
      * 实现普通消息发送
      * @param args
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
+
         //创建一个消息发送入口对象,主要用于消息发送,指定生产者组
         DefaultMQProducer producer =new DefaultMQProducer("ProducerGroup");
         //设置NameServer地址，如果是集群环境，则用分号隔开
@@ -24,8 +26,8 @@ public class Producer {
 
         //封装数据
         Map<String,String> dataMap = new HashMap<String,String>();
-        dataMap.put("mobile","15099711303");
-        dataMap.put("signName","黑马");
+        dataMap.put("mobile","电话号码");
+        dataMap.put("signName","自己在阿里大于上面定义的签名");
         dataMap.put("templateCode","SMS_127156456");
 
         //模板数据

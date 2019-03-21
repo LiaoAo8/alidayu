@@ -27,8 +27,8 @@ public class MessageSender {
 
     /***
      * 消息发送
-     * @param mobile           需要发送的手机号
-     * @param signName        签名
+     * @param mobile         需要发送的手机号
+     * @param signName       签名
      * @param templateCode   模板
      * @param param          模板参数
      * @return

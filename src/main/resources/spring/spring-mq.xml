@@ -25,6 +25,8 @@
         </property>
     </bean>
 
+    <bean id="producer" class="com.itheima.alidayu.Producer">
+    </bean>
     <!--解析配置文件-->
     <context:property-placeholder location="classpath:config/syscontant.properties" />
 </beans>
