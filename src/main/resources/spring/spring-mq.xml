@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--包扫描-->
+    <context:component-scan base-package="com.itheima" />
+
+    <!--创建一个DefaultMQPushConsumer对象，用于消息接收-->
+    <bean id="rocketmqConsumer" class="org.apache.rocketmq.client.consumer.DefaultMQPushConsumer" init-method="start" destroy-method="shutdown">
+        <!--设置消费者组名-->
+        <property name="consumerGroup" value="Message-ConsumerGroup"/>
+        <!--设置NameServer地址-->
+        <property name="namesrvAddr" value="127.0.0.1:9876"/>
+        <!--指定消息监听器，用于读取消息-->
+        <property name="messageListener" ref="messageListener"/>
+        <property name="subscription">
+            <map>
+                <!--指定对应主体和标签-->
+                <entry key="Topic-Mobile-Message">
+                    <value>*</value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <!--解析配置文件-->
+    <context:property-placeholder location="classpath:config/syscontant.properties" />
+</beans>
